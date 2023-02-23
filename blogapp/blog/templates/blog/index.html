@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% load static %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'blog/css/swiper-bundle.min.css' %}" />
+{% endblock %} {% block title%} Anasayfa {% endblock %} {% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          {% for blog in blogs %}
+            {% if blog.is_active %}
+          <div class="swiper-slide">
+            <img
+              src="{{ blog.image.url }}"
+              alt="Anasayfa"
+              class="homepageImg"
+              title='ANASAYFA | Diriliş Metal Geri Dönüşüm'
+            />
+           <div class='sliderDescWrapper'>
+            <h1 class="sliderTitle sliderContent">{{blog.title}}</h1>
+            <h2 class="sliderDesc sliderContent">{{blog.description|safe}}</h2>
+          </div>
+        </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="col-12 mt-md-5 mt-4">{% include 'partials/_categories.html' %}</div>
+      <div>
+        <div class="">
+          <div class="row align-items-center">
+            <div class="col-lg-5 col-md-6">
+              <div class="about-img">
+                <img src="{% static "img/about-banner.jpg" %}" title='HAKKIMIZDA | Diriliş Metal Geri Dönüşüm' class="img-fluid"
+                alt="metal-gorsel"/>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-6">
+              <div class="section-header text-left">
+                <h2>Biz Kimiz?</h2>
+              </div>
+              <div class="about-text">
+                <p>
+                  Doğaya duyduğumuz saygıyla ve gelecek nesillere daha temiz,
+                  yaşanılabilir bir hayat bırakabilmek niyetiyle çıktığımız bu
+                  yolda hurda demir, hurda bakır, hurda kablo, hurda sarı, bronz
+                  çeşitleri, kızıl sarı, çinko, kurşun, alüminyum gibi metal
+                  atıkların geri dönüşümünü sağlayarak ülke ekonomisinin
+                  kalkınmasına ve doğal malzemelerin tekrar işlenerek
+                  kullanılmasına ve kabloların geri kazanımına katkıda
+                  bulunuyoruz.
+                  <br /><br />
+                  Kaliteli hizmet ilkemizle, değerinde ve güncel fiyat
+                  politikamızla güvenilir iş ortağınız olmak başlıca
+                  farkımızdır. Hurda alış ve satışlarımız Londra Metal Borsası
+                  (Lme) bazındadır.
+                </p>
+                <a
+                  class="btn btn-success p-3 aboutTextBtn"
+                  href="{% url 'hakkimizda' %}"
+                  title="HAKKIMIZDA | Diriliş Metal Geri Dönüşüm"
+                  >Devamı</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ {% endblock %} {% block js_files %}
+<script type="module" src="{% static 'blog/js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% load static %}
+  <div class="card text-white  mx-2 mt-3 detailCard">
+    <img class="card-img" src="{{ blog.image.url }}" alt="Diriliş Metal Geri Dönüşüm">
+    <div class="card-img-overlay">
+      <h5 class="card-hover-text">{{ blog.title }}</h5>
+      <p class="cardDetailText">{{ blog.description|safe|truncatechars:200 }}</p>
+      <a  href="{% url 'service_details' blog.slug %}" class=" btn btn-primary goDetail">Detaya Git <i class="bi bi-arrow-right-circle-fill"></i></a>
+    </div>
+  </div>
+
+  

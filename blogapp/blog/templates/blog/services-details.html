@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%} Hizmetlerimiz {% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-6">
+                <div class="about-img">
+                    <img src="{{ blog.image.url }}" title='HİZMETLERİMİZ | Diriliş Metal Geri Dönüşüm' alt="Diriliş Metal Geri Dönüşüm" class="img-fluid" style="width:100%">
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 serviceDetail">
+                <div class="mb-4 mt-2">
+                   <h1 class='h3'>{{ blog.title|title }}</h1>
+                </div>
+                <div class="about-text">
+                        {{ blog.description|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+ 

@@ -1,0 +1,110 @@
+{% load static %} {% block css_files %}
+{% endblock %}
+<footer class="sticky-footer footerContainer mt-3">
+  <div class="">
+    <div
+      class="contactBanner overlay wow fadeIn"
+      data-wow-delay="0.3s"
+      style="animation-delay: 0.3s; animation-name: fadeIn"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-md-12">
+            <div class="contactDesc">
+              <h3>
+                Paslanmaz hurda fiyatları, bakır hurda fiyatları, hurda kablo
+                fiyatları, hurda sarı fiyatları, hurda alüminyum fiyatları ve
+                piyasasının en güncel ve en geçerli hurda fiyatları için
+               <a href="tel:+905312591206" class=""
+                  >+90 531 259 12 06</a
+                >
+                numaralı telefonu arayarak bize ulaşabilirsiniz.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 border-bottom pt-3 pb-3">
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <ul class="me-auto">
+          <h2 class="footerTitle">Menü</h2>
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="{% url 'home' %}" title="ANASAYFA | Diriliş Metal Geri Dönüşüm"
+              ><i class="bi bi-caret-right-fill px-1"></i>Anasayfa</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="{% url 'hakkimizda' %}" title="HAKKIMIZDA | Diriliş Metal Geri Dönüşüm"
+              ><i class="bi bi-caret-right-fill px-1"></i>Hakkımızda</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="{% url 'hizmetlerimiz' %}" title="HAKKIMIZDA | Diriliş Metal Geri Dönüşüm "
+              ><i class="bi bi-caret-right-fill px-1"></i>Hizmetlerimiz</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="{% url 'referanslarimiz' %}" title="REFERANSLARIMIZ |  Diriliş Metal Geri Dönüşüm"
+              ><i class="bi bi-caret-right-fill px-1"></i>Referanslarımız</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="{% url 'iletisim' %}" title="İLETİŞİM | Diriliş Metal Geri Dönüşüm"
+              ><i class="bi bi-caret-right-fill px-1"></i>İletişim</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <ul class="me-auto">
+          <h2 class="footerTitle"><a href="{% url 'hizmetlerimiz' %}" title="Diriliş Metal Geri Dönüşüm Hizmetlerimiz">Hizmetlerimiz</a></h2>
+          {% if services|length > 0 %}
+          {% for blog in services %}
+              <li class="nav-item">
+                <a class="nav-link text-light footerLink" href="{% url 'service_details' blog.slug %}" title="Diriliş Metal Geri Dönüşüm Hizmetlerimiz {{blog.slug}}"
+                  ><i class="bi bi-caret-right-fill px-1"></i>{{ blog.title }}</a
+                >
+              </li>
+          {% endfor %}
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-light footerLink" href="/hizmelerimiz" title="HİZMETLERİMİZ | Diriliş Metal Geri Dönüşüm"
+              ><i class="bi bi-caret-right-fill px-1"></i>{{ blog.title }}</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <ul class="me-auto">
+          <h2 class="footerTitle"><a href="{% url 'iletisim' %}" title="İLETİŞİM | Diriliş Metal Geri Dönüşüm">İletişim Bilgileri</a></h2>
+          <li class="nav-item">
+            <span class="nav-link text-light">
+              <i class="bi bi-geo-alt-fill px-1"></i>Gebze Kocaeli</span
+            >
+          </li>
+          <a href="tel:+905312591206" class="nav-link text-light" title="+90 531 259 12 06"
+            ><i class="bi bi-telephone-fill px-1"></i>+90 531 259 12 06</a
+          >
+          <a href="tel:+905367770592" class="nav-link text-light" title="+90 536 777 05 92"
+              ><i class="bi bi-telephone-fill px-1"></i>+90 536 777 05 92</a
+            >
+          <li class="nav-item">
+              <a  class="nav-link text-light"
+              href="mailto:dirilismetal34@gmail.com"
+              title="dirilismetal34@gmail.com"
+            >
+              <i class="bi bi-envelope-fill px-1"></i> dirilismetal34@gmail.com</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span class="copyright nav-link text-light pt-3 pb-3"
+    >Copyright © 2023 Diriliş Metal Geri Dönüşüm
+  </span>
+</footer>

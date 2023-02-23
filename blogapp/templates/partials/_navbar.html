@@ -1,0 +1,45 @@
+{% load static %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+{% endblock %}
+<a href='/admin' title='Diriliş Metal Geri Dönüşüm admin' class='loginIcon'>
+  <i class="bi bi-box-arrow-in-right"></i>
+</a>
+<nav class="navbar sticky-top navbar-dark navbar-expand-lg">
+  <div class="container" id="myNavbar">
+    <a class="navbar-brand" href="{% url 'home' %}"></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar"
+    >
+      <span class="navbar-toggler-icon"> <p class='toogleIconDesc'>MENÜ</p></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'hakkimizda' %}" title="HAKKIMIZDA | Diriliş Metal Geri Dönüşüm">Hakkımızda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'hizmetlerimiz' %}" title="HİZMETLERİMİZ | Diriliş Metal Geri Dönüşüm">Hizmetlerimiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'referanslarimiz' %}" title="REFERANSLARIMIZ | Diriliş Metal Geri Dönüşüm"
+            >Referanslarımız</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'iletisim' %}" title="İLETİŞİM | Diriliş Metal Geri Dönüşüm" >İletişim</a>
+        </li>
+      </ul>
+    </div>
+    <a href='/admin' title="Diriliş Metal Geri Dönüşüm admin"
+    class='btn btn-dark loginBtn'>
+      Giriş Yap 
+  </a>
+</div>
+</nav>
+

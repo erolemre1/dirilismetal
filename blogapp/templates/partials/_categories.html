@@ -1,0 +1,54 @@
+{% load humanize %}
+<div class="card-group mb-3">
+    <div class="card px-1 mx-1 firstCard">
+      <i class="bi bi-view-list"></i>
+      <div class="card-body">
+        <h4 class="card-title ">Hurda Metal İşleme</h4>
+        <p class="card-text">Tesisimizde hurdalar kesim, pres, paketleme gibi fiziki işlemlerden geçirerek eritilmeye hazır hale getiriyoruz.</p>
+      </div>
+    </div>
+    <div class="card px-1 mx-1 secondCard">
+        <div class="feature-icon">
+        </div>
+        <i class="bi bi-recycle"></i>
+      <div class="card-body">
+        <h4 class="card-title">Kablo Geri Dönüşümü</h4>
+        <p class="card-text">Hurda kabloların işlenerek bakır ve plastiğinin sektörel geri dönmüşümü sağlıyoruz.</p>
+      </div>
+    </div>
+    <div class="card px-1 mx-1 firstCard">
+      <i class="bi bi-building"></i>
+      <div class="card-body ">
+        <h4 class="card-title">Fabrika ve Tesis Sökümü</h4>
+        <p class="card-text">Ömrünü tamamlamış fabrika ve tesisleri sökerek geri dönüşümünü yapıyoruz.</p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 mb-3">
+    <div class="row">
+        <div class="col-md-2 col-sm-6 col-xs-6">
+            <div class="spriceitem">
+                <h5 class="productTitle">
+                    Yerli Hurda Alım Fiyatları
+                </h5>
+                <div class="value">
+                    <div id="date"></div>
+            </div>
+        </div>
+    </div>
+        {% for category in categories %} 
+        <div class="col-md-2 col-sm-6 col-xs-6">
+            <div class="product">
+                <div class="productItem">
+                    <div class="qualityTitle">KALİTE</div>
+                    <div class="quality">{{category.name|title }}</div>
+                </div>
+                <div class="productTitle">
+                    <span class="productPrice">{{ category.price|intcomma }} </span>  
+                    <span class="sup">TRY/TON</span></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+{% endblock %}
+{% block title%} Hizmetlerimiz {% endblock %} 
+{% block content %}
+ <div class="container mt-3">
+  <div class="row">
+      <div class="col-md-12">
+          <h1 class='prefencesTitle'>Hizmet Alanlarımız</h1>
+          <p class='prefencesDesc px-5'>Metal maden sektöründeki tecrübe sahibi çalışanlarımızla, her alanda iş bitirme kolaylıkları sağlamaktayız.
+              Sunduğumuz ürün ve hizmet kalitesini en yüksek seviyede tutmaktayız.
+          <hr>
+          <div class="d-flex flex-wrap justify-content-center">
+          {% if blogs|length > 0 %}            
+              {% for blog in blogs %}
+                  {% if blog.is_active %}
+                      {% include 'blog/partials/_blog.html' %}
+                  {% endif %}
+              {% endfor %}
+          {% else %}
+              <div class="alert alert-warning">Şuan için Aktif Hizmetimiz Bulunmamaktadır</div>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

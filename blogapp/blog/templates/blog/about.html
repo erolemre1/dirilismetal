@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+{% endblock %}
+
+{% block title%} Hakkımızda {% endblock %} 
+
+{% block content %}
+
+<div class="container mt-3">
+  <div class="row align-items-center">
+      <div class="col-lg-5 col-md-6">
+          <div class="about-img">
+              <img src="{% static "img/about-banner.jpg" %}" title='Hakkımızda Diriliş Metal Geri Dönüşüm' class="img-fluid" alt="Hakkımızda | Diriliş Metal | Metal Geri Dönüşüm">
+          </div>
+      </div>
+      <div class="col-lg-7 col-md-6">
+          <div class="about-header mt-3">
+              <h4>Biz Kimiz</h4>
+          </div>
+          <div class="about-text">
+              <p>
+                  Doğaya duyduğumuz saygıyla ve gelecek nesillere daha temiz, yaşanılabilir bir hayat bırakabilmek niyetiyle çıktığımız bu yolda hurda demir, hurda bakır, hurda kablo, hurda sarı, bronz çeşitleri, kızıl sarı, çinko, kurşun, alüminyum gibi metal atıkların geri dönüşümünü sağlayarak ülke ekonomisinin kalkınmasına ve doğal malzemelerin tekrar işlenerek kullanılmasına ve kabloların geri kazanımına katkıda bulunuyoruz.                                                      
+              </p>
+              <p>
+                  Kaliteli hizmet ilkemizle, değerinde ve güncel fiyat politikamızla güvenilir iş ortağınız olmak başlıca farkımızdır. Hurda alış ve satışlarımız Londra Metal Borsası (Lme) bazındadır. 
+              </p>
+              <p>
+                  Şu anda Geri Dönüşüm alanında Türkiye’nin önde gelen metal hurda alım satım şirketleri arasında yer almaktayız. Bu doğrultuda özellikle Türkiye’deki en önemli çubuk sarı, bakır, soyma bakır, alüminyum, imalatçılarıyla ticaret yapmaktayız.
+              </p>
+          </div>
+
+          <div class="about-header">
+              <h4>Vizyonumuz</h4>
+          </div>
+          <div class="about-text">
+              <p>
+                  Dünya üzerinde birlikte yaşadığımız her canlının yaşam hakkına sahip çıkılan, küresel kaynakların optimum biçimde kullanıldığı yeşil bir yeryüzünün, en önemli mimarlarından olmak.
+              </p>
+          </div>
+
+          <div class="about-header">
+              <h4>Misyonumuz</h4>
+          </div>
+          <div class="about-text">
+              <p>
+                  Gezegenimizin devamlılığına özen göstermek, <br>
+                  Piyasayı takip eden değil, belirleyen kurumlardan biri olmak, <br>
+                  Güçlü ekip, teknik altyapı ve makina ekipman ile yaşadığımız coğrafyaya etkin ve süratli hizmet vermek.
+              </p>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+{% endblock %}

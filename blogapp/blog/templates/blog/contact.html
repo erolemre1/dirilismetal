@@ -1,0 +1,160 @@
+{% extends "base.html" %} {% load static %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'blog/css/swiper-bundle.min.css' %}" />
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script type="text/javascript">
+  (function () {
+    // https://dashboard.emailjs.com/admin/account
+    emailjs.init("N-2l1fzxfAP1RVDcw");
+  })();
+</script>
+{% endblock %} {% block title%} İletişim{% endblock %} {% block content %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="contact-info">
+          <div class="contact-item">
+              <div class="contact-text">
+                  <h2>Adres</h2>
+                  <p><i class="bi bi-building"></i>Gebze - Kocaeli</p>
+              </div>
+          </div>
+          <div class="contact-item">
+              <div class="contact-text">
+                  <h2>Telefon</h2>
+                  <p><a href="tel:+905312591206" title='+90 531 259 12 06' class="nav-link text-light"
+                    ><i class="bi bi-telephone-fill"></i>+90 531 259 12 06</a
+                  ></p>
+                  <p><a href="tel:+905367770592" title='+90 536 777 05 92' class="nav-link text-light"
+                    ><i class="bi bi-telephone-fill"></i>+90 536 777 05 92</a
+                  ></p>
+              </div>
+          </div>
+          <div class="contact-item">
+              <div class="contact-text">
+                  <h2>Eposta</h2>
+                  <p><a href="mailto:dirilismetal34@gmail.com" title="dirilismetal34@gmail.com"><i class="bi bi-envelope-fill"></i>dirilismetal34@gmail.com</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="col-md-12">
+      {% csrf_token %}
+      <form class="row g-3 needs-validation py-4 mt-3" novalidate>
+        <div class="col-md-6">
+          <label for="validationCustom01" class="form-label">Adınız Soyadınız</label>
+          <input id="toName" type="text" class="form-control" id="validationCustom01" value="" required placeholder="Ad Soyad Giriniz">
+          <div class="invalid-feedback">Lütfen adınızı ve soyadınızı giriniz.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationCustom02" class="form-label">Telefon</label>
+          <input id="toPhone" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)" maxlength="11" class="form-control" id="validationCustom02" value="" required placeholder="0 (5__) __ __">
+          <div class="invalid-feedback">Lütfen telefonunuzu giriniz.</div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="validationCustom03" class="form-label">E-posta</label>
+          <input id="fromName" type="email" class="form-control" name="email" required placeholder="E-posta adresi">
+          <div class="invalid-feedback">Lütfen e-postanızı giriniz.</div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationTextarea" class="form-label">Mesaj</label>
+          <textarea id="msg" class="form-control" id="validationTextarea" placeholder="Mesajınızı Giriniz" required></textarea>
+          <div class="invalid-feedback">
+            Lütfen mesajınızı giriniz.
+          </div>
+        </div>
+        <div class="" id='successMessage' role="alert"></div>
+        <div class="col-12">
+          <button class="btn btn-primary" id='sendButton' type="submit">Mesajı Gönder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+
+  const nameInput = document.getElementById('toName');
+  const phoneInput = document.getElementById('toPhone');
+  const mailInput = document.getElementById('fromName');
+  const messageInput = document.getElementById('msg');
+  const sendButton = document.getElementById('sendButton');
+  const successMessage = document.getElementById('successMessage');
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity()) {
+          event.preventDefault()
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+          const phoneRegex = /^\d{11}$/
+          if (!document.getElementById("fromName").value.match(emailRegex)) {
+            alert("Hatalı E-posta adresi girdiniz lütfen tekrar kontrol ediniz.");
+            return false;
+          }
+          if (!document.getElementById("toPhone").value.match(phoneRegex)) {
+            alert("Hatalı telefon numarası girdiniz lütfen tekrar kontrol ediniz.");
+            return false;
+          }
+          
+            sendButton.classList.add('loading');
+            sendButton.classList.add('disabled');
+            sendButton.innerHTML = "";
+            setTimeout(function() {
+              sendButton.classList.remove('loading');
+              sendButton.classList.remove('disabled');
+              sendButton.innerHTML = "Mesaj Gönder";
+              successMessage.classList.add('alert');
+              successMessage.classList.add('alert-success');
+              successMessage.innerHTML = "Mesajınız Başarı İle Gönderildi.";
+            }, 3000); 
+            setTimeout(function() {
+              successMessage.innerHTML = "";
+              successMessage.classList.remove('alert');
+              successMessage.classList.remove('alert-success');
+            }, 8000); 
+
+          async function sendMail(params) {
+            var tempParams = {
+              from_name: document.getElementById("fromName").value,
+              to_name: document.getElementById("toName").value,
+              to_phone: document.getElementById("toPhone").value,
+              message: document.getElementById("msg").value,
+            };
+        
+            await emailjs
+              .send("service_ogkf43a", "template_mr5z8bg", tempParams)
+              .then(function (res) {
+                console.log("res", res);
+              });
+          }
+         sendMail()
+
+        
+        } else {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+{% endblock %}
+{% block js_files %}
+{% comment %} <script type="module" src="{% static 'blog/js/script.js' %}"></script> {% endcomment %}
+{% endblock %}
+
