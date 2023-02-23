@@ -32,7 +32,7 @@ DEBUG = getenv("IS_DEVELOPMENT", True)
 #     getenv("APP_HOST")
 # ]
 
-ALLOWED_HOSTS = ['www.dirilismetal.com','dirilismetal.com']
+ALLOWED_HOSTS = ['127.0.0.1','www.dirilismetal.com','dirilismetal.com']
 
 
 # Application definition
