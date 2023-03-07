@@ -11,11 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-# from os import getenv
-import os
-import sys
-import dj_database_url
-from django.core.management.utils import get_random_secret_key
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,38 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-
-if DEVELOPMENT_MODE is True:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
-
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
 # SECRET_KEY = 'django-insecure-6d1_z9236#webyq^rhug!v-0w^6%2cup&jxsq&ir!p$e!hczog'
-# SECRET_KEY = getenv("SECRET_KEY")
+SECRET_KEY = getenv("SECRET_KEY")
 
-# DEBUG = getenv("IS_DEVELOPMENT", True)
+DEBUG = getenv("IS_DEVELOPMENT", True)
 # DEBUG = True
+
 # ALLOWED_HOSTS = [
 #     getenv("APP_HOST")
 # ]
 
-# ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1','www.dirilismetal.com','dirilismetal.com']
 
 
 # Application definition
@@ -159,6 +134,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/images/"
