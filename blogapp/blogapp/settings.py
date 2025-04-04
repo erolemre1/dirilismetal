@@ -26,14 +26,14 @@ SECRET_KEY = 'django-insecure-6d1_z9236#webyq^rhug!v-0w^6%2cup&jxsq&ir!p$e!hczog
 # SECRET_KEY = getenv("SECRET_KEY")
 
 # DEBUG = getenv("IS_DEVELOPMENT", True)
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 # ALLOWED_HOSTS = [
 #     getenv("APP_HOST")
 # ]
 
-ALLOWED_HOSTS = ['127.0.0.1','www.dirilismetal.com','dirilismetal.com']
+ALLOWED_HOSTS = ['127.0.0.1','www.dirilismetal.com','dirilismetal.com','dirilismetal.onrender.com']
 
 
 # Application definition
